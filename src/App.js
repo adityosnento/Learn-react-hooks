@@ -1,20 +1,24 @@
-import React from "react";
-import { connect } from "react-redux";
-import { BrowserRouter as Router} from "react-router-dom";
-import "./App.css";
+import React from 'react';
+import './App.scss';
+import SignUp from './components/Auth/Signup';
+import SignIn from './components/Auth/Signin';
+import Routes from './components/Try/routes';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Routes from "./components/Routes/routes";
-
-const App = () => {
+function App() {
   return (
-    <Router>
-      <Header />
-      <Routes />
-      <Footer />
-    </Router>
+    <BrowserRouter>
+      <div className="App">
+        <div className="container">
+          <Switch>
+            <Route path='/signup' component={SignUp}/>
+            <Route path='/signin' component={SignIn}/>
+            <Route path='/' component={Routes}/>
+          </Switch>
+        </div>
+      </div>
+    </BrowserRouter>
   );
-};
+}
 
-export default connect()(App);
+export default App;
